@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TarefaController;
+use App\Mail\MensagemTesteMail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +22,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::resource('tarefa', 'App\Http\Controllers\TarefaController')->middleware('auth');
+// o auth pode ser aplicado tanto na rota como em um __construct no TarefaController
+
+Route::get('/mensagem-teste', function() {
+    return new MensagemTesteMail();
+});
