@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TarefaController;
+use App\Http\Controllers\TaskController;
 use App\Mail\MensagemTesteMail;
 use Illuminate\Support\Facades\Route;
 
@@ -24,8 +24,8 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('tarefa', 'App\Http\Controllers\TarefaController')->middleware('auth');
-// o auth pode ser aplicado tanto na rota como em um __construct no TarefaController
+Route::resource('task', 'App\Http\Controllers\TaskController')->middleware('auth');
+// o auth pode ser aplicado tanto na rota como em um __construct no TaskController
 
 Route::get('/mensagem-teste', function() {
     return new MensagemTesteMail();

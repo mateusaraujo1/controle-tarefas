@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tarefa;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
-class TarefaController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class TarefaController extends Controller
      */
     public function create()
     {
-        //
+        return view('task.create');
     }
 
     /**
@@ -35,27 +35,28 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = Task::create($request->all());
+        return redirect()->route('task.show', ['task' => $task->id]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tarefa  $tarefa
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Tarefa $tarefa)
+    public function show(Task $task)
     {
-        //
+        dd($task->getAttributes());
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tarefa  $tarefa
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tarefa $tarefa)
+    public function edit(Task $task)
     {
         //
     }
@@ -64,10 +65,10 @@ class TarefaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tarefa  $tarefa
+     * @param  \App\Models\Task  $tarefa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tarefa $tarefa)
+    public function update(Request $request, Task $task)
     {
         //
     }
@@ -75,10 +76,10 @@ class TarefaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tarefa  $tarefa
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tarefa $tarefa)
+    public function destroy(Task $task)
     {
         //
     }
