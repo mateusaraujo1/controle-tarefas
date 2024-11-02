@@ -24,7 +24,7 @@ class NewTaskMail extends Mailable
     public function __construct(Task $task)
     {
         $this->task = $task->task;
-        $this->limit_date_conclusion = $task->limit_date_conclusion;
+        $this->limit_date_conclusion = date('d/m/Y', strtotime($task->limit_date_conclusion));
         $this->url = 'http://localhost:8000/task/'.$task->id;
     }
 
@@ -35,6 +35,6 @@ class NewTaskMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.new-task');
+        return $this->markdown('emails.new-task')->subject('Nova tarefa criada');
     }
 }

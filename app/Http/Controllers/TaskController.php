@@ -53,7 +53,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        dd($task->getAttributes());
+        return view('task.show', ['task' => $task]);
     }
 
     /**
