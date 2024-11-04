@@ -16,7 +16,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return 'chegamos aqui';
+        $user_id = auth()->user()->id;
+        $tasks = Task::where('user_id', $user_id)->get();
+        // get() serve pra ser um objeto apenas com os atributos da tabela, sem aquelas  informações desnecessárias
+
+        return view('task.index', ['tasks' => $tasks]);
     }
 
     /**
