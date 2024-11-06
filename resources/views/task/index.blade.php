@@ -31,6 +31,21 @@
                         </tbody>
                       </table>
 
+                      <nav>
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="{{ $tasks->previousPageUrl() }}">Voltar</a></li>
+
+                          @for($i = 1; $i <= $tasks->lastPage(); $i++)
+                              
+                          <li class="page-item {{ $tasks->currentPage() == $i ? 'active' : '' }}"><a class="page-link" href="{{ $tasks->url($i) }}">{{ $i }}</a></li>
+
+                          @endfor
+
+                          <li class="page-item"><a class="page-link" 
+                            href="{{ $tasks->nextPageUrl() }}">Avançar</a></li>
+                        </ul>
+                      </nav>
+
                 </div>
             </div>
         </div>
